@@ -162,6 +162,7 @@ export default class Map {
     const newMarker = marker(coordinates, {
       icon: this.createIcon(),
       alt: 'Marker',
+      draggable: true,
       ...markerOptions,
     });
 

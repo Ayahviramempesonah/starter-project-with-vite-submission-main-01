@@ -1,6 +1,12 @@
 import { fetchStoryById } from '../../data/api';
+import { generateItemDetailTemplate } from '../../template';
+import Map from '../../utils/map';
+import { parseActivePathname } from '../../routes/url-parser';
 
 export default class DetailPage {
+  #map;
+  #presenter;
+
   async render() {
     return `
       <section class="detail-container">
@@ -19,12 +25,20 @@ export default class DetailPage {
       if (!storyId) {
         throw new Error('Invalid story ID.');
       }
-
       // Panggil API untuk mendapatkan detail cerita
       const response = await fetchStoryById(storyId);
 
       // Render detail cerita ke halaman
       this.renderStoryDetail(response.story);
+
+      // inisialisasi map
+      if (response.story.lat !== null && response.story.lon !== null) {
+        await this.initialMap();
+        const coordinate = [response.story.lat, response.story.lon];
+        const markerOptions = { alt: response.story.name };
+        const popupOptions = { content: response.story.description };
+        this.#map.addMarker(coordinate, markerOptions, popupOptions);
+      }
     } catch (error) {
       console.error('Error fetching story details:', error.message);
       document.getElementById('story-detail').innerHTML =
@@ -40,49 +54,19 @@ export default class DetailPage {
       return;
     }
 
-    // Buat HTML untuk detail cerita
-    const storyDetailHTML = `
-      <div class="story-detail">
-        <img src="${story.photoUrl}" alt="${story.name}" width="300">
-        <h2>${story.name}</h2>
-        <p>${story.description}</p>
-        <p><strong>Date:</strong> ${new Date(story.createdAt).toLocaleString()}</p>
-        <p><strong>Location:</strong> Latitude: ${story.lat}, Longitude: ${story.lon}</p>
-      </div>
-    `;
+    const storyDetailHTML = generateItemDetailTemplate(story);
 
     // Tambahkan detail cerita ke halaman
     storyDetailElement.innerHTML = storyDetailHTML;
   }
+
+  async initialMap() {
+    try {
+      this.#map = await Map.build('#map', {
+        zoom: 10,
+      });
+    } catch (error) {
+      console.error('Error initializing map:', error.message);
+    }
+  }
 }
-
-
-// import { DetailPresenter } from "./detail-presenter";
-// import Map from "../../utils/map";
-// import * as API from "../../data/api";
-// import { parseActivePathname } from "../../routes/url-parser";
-
-// export class DetailPage {
-//   #presenter
-//   #map
-//   async render() {
-//     return `
-//       <section class="detail-container">
-//         <h1> Detail Story  </h1>
-//         <div id="story-detail"></div>
-//       </section>
-//     `;
-//   }
-
-//   async afterRender() {
-      
-// this.#presenter = new DetailPresenter({
-//       view: this,
-//       model: API,
-//     });
-
-//   }
-
-// }
-
-// test psuh branch-submission-01

@@ -12,6 +12,7 @@ export function generateItemDetailTemplate({
         <img src="${photoUrl}" alt="${name}" class="item-image">
         <div class="item-content">
           <h3 class="item-title">${name}</h3>
+          <div id="map" class"detail-map" style="height:400px; border-radius: 10px;" ></div>
           <p class="item-description">${description || 'No description available.'}</p>
           <p class="item-date"><small>Created at: ${new Date(createdAt).toLocaleString()}</small></p>
           ${
