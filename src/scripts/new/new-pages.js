@@ -135,7 +135,7 @@ export default class AddStoryPage {
 
     // Aktifkan kamera
     try {
-      this.#videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      this.#videoStream = await navigator.mediaDevices.getUserMedia({ video:{facingMode: "environment"}});
       video.srcObject = this.#videoStream;
     } catch (err) {
       console.error('Tidak dapat mengakses kamera:', err);

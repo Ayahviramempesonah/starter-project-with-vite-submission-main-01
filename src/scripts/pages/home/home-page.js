@@ -98,7 +98,18 @@ export default class HomePage {
   async initialMap() {
     this.#map = await Map.build('#map', {
       zoom: 10,
+      Draggable: true,
     });
+
+    this.#map.addMapEventListener('click', (e) => {
+      const coordinate = [e.latlng.lat, e.latlng.lng];
+      const markerOptions = { alt: 'Drag me to set location' };
+      this.#map.addMarker(coordinate, markerOptions);
+    });
+//baru
+
+// Inisialisasi peta
+
   }
 
   showLoading() {

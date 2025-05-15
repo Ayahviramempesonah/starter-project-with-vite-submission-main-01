@@ -189,3 +189,89 @@ export default class Map {
     this.#map.addEventListener(eventName, callback);
   }
 }
+
+
+//baru
+
+// import { map, tileLayer, marker, circle, popup } from 'leaflet';
+
+// export default class Map {
+//   constructor(selector, center = [-6.2088, 106.8456], zoom = 13) {
+//     this.map = map(document.querySelector(selector), {
+//       center,
+//       zoom,
+//     });
+
+//     // Tambahkan tile layer OpenStreetMap
+//     tileLayer('https://tile.openstreetmap.org/ {z}/{x}/{y}.png', {
+//       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+//     }).addTo(this.map);
+//   }
+
+//   /**
+//    * Menambahkan marker ke peta
+//    * @param {Array} coordinates [lat, lng]
+//    * @param {String} text Konten popup
+//    * @param {Boolean} openPopup Apakah popup langsung dibuka?
+//    */
+//   addMarker(coordinates, text = '', openPopup = false) {
+//     const newMarker = marker(coordinates).addTo(this.map);
+//     if (text) {
+//       newMarker.bindPopup(text);
+//       if (openPopup) {
+//         newMarker.openPopup();
+//       }
+//     }
+//     return newMarker;
+//   }
+
+//   /**
+//    * Menambahkan lingkaran ke peta
+//    * @param {Array} coordinates [lat, lng]
+//    * @param {Number} radius Radius dalam meter
+//    * @param {Object} options Opsi styling
+//    * @param {String} popupText Konten popup
+//    */
+//   addCircle(coordinates, radius = 500, options = {}, popupText = '') {
+//     const defaultOptions = {
+//       color: 'red',
+//       fillColor: '#f03',
+//       fillOpacity: 0.5,
+//       ...options,
+//     };
+
+//     const newCircle = circle(coordinates, defaultOptions).addTo(this.map);
+
+//     if (popupText) {
+//       newCircle.bindPopup(popupText);
+//     }
+
+//     return newCircle;
+//   }
+
+//   /**
+//    * Menambahkan event click pada peta
+//    * @param {Function} callback Fungsi yang dipanggil saat klik
+//    */
+//   onMapClick(callback) {
+//     this.map.on('click', (e) => {
+//       if (typeof callback === 'function') {
+//         callback(e);
+//       } else {
+//         const pop = popup()
+//           .setLatLng(e.latlng)
+//           .setContent(`You clicked the map at ${e.latlng.toString()}`)
+//           .openOn(this.map);
+//       }
+//     });
+//   }
+
+//   /**
+//    * Memindahkan kamera ke koordinat tertentu
+//    * @param {Array} coordinates [lat, lng]
+//    * @param {Number} zoomLevel Level zoom
+//    */
+//   setView(coordinates, zoomLevel = this.map.getZoom()) {
+//     this.map.setView(coordinates, zoomLevel);
+//   }
+// }
