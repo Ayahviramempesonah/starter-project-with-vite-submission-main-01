@@ -8,6 +8,7 @@ import CONFIG from '../config';
 export default class Map {
   #zoom = 5;
   #map = null;
+  // tesh push merge
 
   /**
    * Mengambil nama tempat berdasarkan koordinat menggunakan reverse geocoding.
