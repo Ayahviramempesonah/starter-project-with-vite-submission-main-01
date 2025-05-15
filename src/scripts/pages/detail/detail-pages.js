@@ -55,3 +55,32 @@ export default class DetailPage {
     storyDetailElement.innerHTML = storyDetailHTML;
   }
 }
+
+
+// import { DetailPresenter } from "./detail-presenter";
+// import Map from "../../utils/map";
+// import * as API from "../../data/api";
+// import { parseActivePathname } from "../../routes/url-parser";
+
+// export class DetailPage {
+//   #presenter
+//   #map
+//   async render() {
+//     return `
+//       <section class="detail-container">
+//         <h1> Detail Story  </h1>
+//         <div id="story-detail"></div>
+//       </section>
+//     `;
+//   }
+
+//   async afterRender() {
+      
+// this.#presenter = new DetailPresenter({
+//       view: this,
+//       model: API,
+//     });
+
+//   }
+
+// }
