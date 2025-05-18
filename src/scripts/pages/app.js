@@ -1,15 +1,23 @@
 import routes from '../routes/routes';
 import { getActiveRoute, getActivePathname } from '../routes/url-parser';
+import {
+  generateAuthenticatedNavigationListTemplate,
+  generateMainNavigationListTemplate,
+  generateUnauthenticatedNavigationListTemplate,
+} from '../template';
+import { getAccessToken, removeAccessToken } from '../utils/auth';
 
 class App {
+  #drawerNavigation;
   #content = null;
   #drawerButton = null;
   #navigationDrawer = null;
 
-  constructor({ navigationDrawer, drawerButton, content }) {
+  constructor({ navigationDrawer, drawerButton, content, drawerNavigation }) {
     this.#content = content;
     this.#drawerButton = drawerButton;
     this.#navigationDrawer = navigationDrawer;
+    this.#drawerNavigation = drawerNavigation;
 
     this.#setupDrawer();
   }
@@ -35,6 +43,35 @@ class App {
     });
   }
 
+  //navigation list
+  #setupNavigationList() {
+    const isLogin = !!getAccessToken();
+    const navListMain = this.#drawerNavigation.children.namedItem('navlist-main');
+    const navList = this.#drawerNavigation.children.namedItem('navlist');
+
+    // User not log in
+    if (!isLogin) {
+      navListMain.innerHTML = '';
+      navList.innerHTML = generateUnauthenticatedNavigationListTemplate();
+      return;
+    }
+
+    navListMain.innerHTML = generateMainNavigationListTemplate();
+    navList.innerHTML = generateAuthenticatedNavigationListTemplate();
+
+    const logoutButton = document.getElementById('logout-button');
+    logoutButton.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      if (confirm('Apakah Anda yakin ingin keluar?')) {
+        getLogout();
+
+        // Redirect
+        location.hash = '/login';
+      }
+    });
+  }
+
   async renderPage() {
     const url = getActiveRoute();
     const route = routes[url];
@@ -43,35 +80,8 @@ class App {
 
     this.#content.innerHTML = await page.render();
     await page.afterRender();
+    this;
   }
-
-  // perbaikan renderPage
-  // async renderPage() {
-  //   try {
-  //     // Dapatkan path aktif
-  //     const activePathname = getActivePathname();
-
-  //     // Dapatkan route yang cocok dengan path aktif
-  //     const routeKey = getActiveRoute(activePathname, routes);
-  //     const Page = routes[routeKey];
-
-  //     if (!Page) {
-  //       throw new Error(`No route found for path: '${activePathname}'`);
-  //     }
-
-  //     // Buat instance halaman
-  //     const pageInstance = new Page();
-
-  //     // Render halaman
-  //     this.#content.innerHTML = await pageInstance.render();
-  //     await pageInstance.afterRender();
-  //   } catch (error) {
-  //     console.error('Error rendering page:', error.message);
-  //     this.#content.innerHTML = `<p style="color: red;">${error.message}</p>`;
-  //   }
-  //   console.log('Active route key:', routeKey);
-
-  // }
 }
 
 export default App;

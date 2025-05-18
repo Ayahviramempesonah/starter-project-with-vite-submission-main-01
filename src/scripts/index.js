@@ -3,6 +3,8 @@ import '../styles/styles.css';
 import '../styles/responsive.css';
 
 import App from './pages/app';
+import 'leaflet/dist/leaflet.css';
+import Camera from './utils/camera';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const app = new App({
@@ -14,5 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   window.addEventListener('hashchange', async () => {
     await app.renderPage();
+    //stop all stream
+    Camera.stopAllStreams();
   });
 });

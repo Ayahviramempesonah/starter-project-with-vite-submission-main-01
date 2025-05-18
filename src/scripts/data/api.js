@@ -141,19 +141,25 @@ export async function fetchStoryById(id) {
   }
 }
 
-export async function addNewStory(description, photoFile, lat, lon) {
+//function api addnewstory alias post
+export async function addNewStory(storyData) {
   try {
     const token = getAccessToken();
     if (!token) {
       throw new Error('Access token is missing or invalid.');
     }
 
+    const { description, photo, lat, lon } = storyData;
+
     const formData = new FormData();
     formData.append('description', description);
-    formData.append('photo', photoFile);
 
-    if (lat !== null) formData.append('lat', lat);
-    if (lon !== null) formData.append('lon', lon);
+    // Only append photo if it exists
+    if (photo) {
+      formData.append('photo', photo);
+    }
+    if (typeof lat === 'number' && !isNaN(lat)) formData.append('lat', lat.toString());
+    if (typeof lon === 'number' && !isNaN(lon)) formData.append('lon', lon.toString());
 
     const response = await fetch(`${CONFIG.BASE_URL}/stories`, {
       method: 'POST',

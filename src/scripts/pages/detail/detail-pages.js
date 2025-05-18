@@ -4,8 +4,14 @@ import Map from '../../utils/map';
 import { parseActivePathname } from '../../routes/url-parser';
 
 export default class DetailPage {
-  #map;
   #presenter;
+  #form;
+  #camera;
+  #isCameraOpen = false;
+  #takenDocumentations = [];
+  // #updateLatLngInput
+  // #updateLatLngInput
+  #map = null;
 
   async render() {
     return `
@@ -61,12 +67,9 @@ export default class DetailPage {
   }
 
   async initialMap() {
-    try {
-      this.#map = await Map.build('#map', {
-        zoom: 10,
-      });
-    } catch (error) {
-      console.error('Error initializing map:', error.message);
-    }
+    this.#map = await Map.build('#map', {
+      zoom: 15,
+      locate: true,
+    });
   }
 }

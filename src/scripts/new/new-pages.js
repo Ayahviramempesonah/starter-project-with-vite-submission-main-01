@@ -78,13 +78,13 @@ export default class AddStoryPage {
     return `
       <section class="add-story-container">
         <h1>Add New Story</h1>
-        
+
         <form id="add-story-form">
           <div>
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
           </div>
-  
+
           <!-- Area Kamera -->
           <div style="margin-top: 20px;">
             <h3>Camera Preview</h3>
@@ -92,16 +92,16 @@ export default class AddStoryPage {
             <button type="button" id="capture-btn" style="margin-top: 10px;">Capture Photo</button>
             <canvas id="canvas" style="display: none;"></canvas>
           </div>
-  
+
           <!-- Gambar Hasil Tangkapan -->
           <div style="margin-top: 15px;" id="image-preview"></div>
-  
+
           <!-- Peta dan Lokasi -->
           <div style="margin-top: 20px;">
             <h3>Set Location</h3>
             <div id="map" style="height: 400px; border-radius: 8px;"></div>
           </div>
-  
+
           <div style="display: flex; gap: 10px;">
             <div style="flex:1;">
               <label for="lat">Latitude:</label>
@@ -112,7 +112,7 @@ export default class AddStoryPage {
               <input type="number" id="lon" name="lon" step="any" readonly />
             </div>
           </div>
-  
+
           <button type="submit">Submit</button>
         </form>
         <p id="form-message"></p>

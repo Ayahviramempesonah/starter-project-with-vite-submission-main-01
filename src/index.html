@@ -26,5 +26,18 @@
     </header>
 
     <main id="main-content" class="main-content"></main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; <span id="current-year"></span> codertamvan All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const currentYearElement = document.getElementById('current-year');
+      if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+      }
+    </script>
   </body>
 </html>
