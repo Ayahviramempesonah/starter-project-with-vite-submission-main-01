@@ -10,6 +10,7 @@ export function generateItemDetailTemplate({
   return `
       <div class="item-detail" data-id="${id}">
         <img src="${photoUrl}" alt="${name}" class="item-image">
+       <div id="item-detail-loading"></div>
         <div class="item-content">
           <h3 class="item-title">${name}</h3>
           <div id="map" class"detail-map" style="height:400px; border-radius: 10px;" ></div>
