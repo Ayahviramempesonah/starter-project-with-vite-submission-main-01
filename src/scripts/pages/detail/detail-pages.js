@@ -14,11 +14,29 @@ export default class DetailPage {
 
   async render() {
     return `
-      <section class="detail-container">
-        <h1>Story Detail</h1>
-        <div id="story-detail-loadiing"></div>
-        <div id="story-detail"></div>
-      </section>
+     <section class="detail-container" aria-labelledby="detail-title">
+  <h1 id="detail-title">Story Detail</h1>
+  
+  <!-- Loading State -->
+  <div 
+    id="story-detail-loadiing" 
+    aria-live="polite" 
+    aria-busy="true" 
+    hidden
+  >
+    <p class="visually-hidden">Memuat detail story...</p>
+    <div class="loading-spinner" aria-hidden="true"></div>
+  </div>
+  
+  <!-- Konten Utama -->
+  <div 
+    id="story-detail" 
+    aria-live="polite" 
+    role="article"
+  >
+    <!-- Konten akan diisi secara dinamis -->
+  </div>
+</section>
     `;
   }
 
@@ -29,52 +47,7 @@ export default class DetailPage {
     });
 
     await this.#presenter.showStoryDetail(); //fungsi dari presenter
-
-    // const showStory = await this.#presenter.showStoryDetail(); //fungsi dari presenter
-    // console.log('showStory', showStory);
-
-    // try {
-    //   // Dapatkan ID cerita dari URL
-    //   const urlParts = window.location.hash.slice(2).split('/');
-    //   const storyId = urlParts[1]; // Ambil bagian kedua dari path
-
-    //   if (!storyId) {
-    //     throw new Error('Invalid story ID.');
-    //   }
-    //   // Panggil API untuk mendapatkan detail cerita
-    //   const response = await fetchStoryById(storyId);
-
-    //   // Render detail cerita ke halaman
-    //   this.renderStoryDetail(response.story);
-
-    //   // inisialisasi map
-    //   if (response.story.lat !== null && response.story.lon !== null) {
-    //     await this.initialMap();
-    //     const coordinate = [response.story.lat, response.story.lon];
-    //     const markerOptions = { alt: response.story.name };
-    //     const popupOptions = { content: response.story.description };
-    //     this.#map.addMarker(coordinate, markerOptions, popupOptions);
-    //   }
-    // } catch (error) {
-    //   console.error('Error fetching story details:', error.message);
-    //   document.getElementById('story-detail').innerHTML =
-    //     `<p style="color: red;">${error.message}</p>`;
-    // }
   }
-
-  // renderStoryDetail(story) {
-  //   const storyDetailElement = document.getElementById('story-detail');
-
-  //   if (!story) {
-  //     storyDetailElement.innerHTML = '<p>No story details available.</p>';
-  //     return;
-  //   }
-
-  //   const storyDetailHTML = generateItemDetailTemplate(story);
-
-  //   // Tambahkan detail cerita ke halaman
-  //   storyDetailElement.innerHTML = storyDetailHTML;
-  // }
 
   async populateStoryAndInitailMap(message, report) {
     document.getElementById('story-detail').innerHTML = generateItemDetailTemplate({

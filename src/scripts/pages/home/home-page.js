@@ -10,17 +10,18 @@ export default class HomePage {
   async render() {
     return `
     
-      <section>
-        <div class="reports-list__map__container">
-          <div id="map" class="reports-list__map"></div>
-          <div id="map-loading-container"></div>
-        </div>
-      </section>
-      <div id="story-loading-container"></div>
-      <section class="container">
-        <h1 class="section-title">InstaLite Story</h1>
-        <div id="story-list" class="story-list"></div>
-      </section>
+    <section>
+ <div class="reports-list__map__container">
+  <div id="map" class="reports-list__map"   role="region" aria-label="Peta lokasi"></div>
+  <div id="map-loading-container"></div>
+ </div>
+ </section>
+<div id="story-loading-container"></div>
+<section class="container"   aria-labelledby="stories-heading" >
+ <h1 class="section-title">InstaLite Story</h1>
+ <div id="story-list" class="story-list" role="list" aria-live="polite" ></div>
+ </section> 
+
     `;
   }
 
@@ -52,15 +53,6 @@ export default class HomePage {
     }
 
     const html = reports.reduce((accumulator, report) => {
-      // if (this.#map) {
-      //   console.log(report);
-      //   const coordinate = [report.lat, report.lon];
-      //   const markerOptions = { alt: report.name };
-      //   const popupOptions = { content: report.description };
-      //   console.log('coordinate', coordinate);
-      //   this.#map.addMarker(coordinate, markerOptions, popupOptions);
-      // }
-      //coba
       if (report.lat !== null && report.lon !== null && !isNaN(report.lat) && !isNaN(report.lon)) {
         // console.log(report);
         const coordinate = [report.lat, report.lon];

@@ -6,7 +6,9 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Caveat', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
   line-height: 1.6;
   background-color: #f9f9f9;
   color: #333;
@@ -232,6 +234,7 @@ i.loader-button {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 8px;
+  animation: full-slide-from-right ease-out 0.8s forwards;
 }
 
 .story-item {
@@ -573,12 +576,18 @@ form-control {
 }
 
 //footer
-.footer {
-  background-color: #1a73e8;
-  /* text-align:center; */
+.container-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#pfooter {
   align-items: center;
 }
-
 /* detail */
 .detail-container {
   max-width: 600px;
@@ -592,4 +601,57 @@ form-control {
 
 #story-detail {
   animation: full-slide-from-right ease-out 0.8s forwards;
+}
+
+//about
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container-about {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: full-slide-from-right ease-out 0.8s forwards;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+#nama,
+#profesi,
+#deskripsi {
+  font-weight: bold;
+  color: #00698f;
+}
+
+//skiptocontent
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #000;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+  outline: 2px solid white;
+}
+#strory-list {
+  animation: full-slide-from-right ease-out 0.8s forwards;
+
+  outline: 2px dashed #000;
 }
