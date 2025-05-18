@@ -2,13 +2,29 @@ import { map, tileLayer, Icon, icon, marker, popup, latLng } from 'leaflet';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-// import { MAP_SERVICE_API_KEY } from '../config';
 import CONFIG from '../config';
 
 export default class Map {
   #zoom = 5;
   #map = null;
-  // tesh push merge
+
+  //   static async getPlaceNameByCoordinate(latitude, longitude) {
+  //     try {
+  //       const url = new URL(`https://api.maptiler.com/geocoding/${longitude},${latitude}.json`);
+  //       url.searchParams.set('key', MAP_SERVICE_API_KEY);
+  //       url.searchParams.set('language', 'id');
+  //       url.searchParams.set('limit', '1');
+
+  //       const response = await fetch(url);
+  //       const json = await response.json();
+
+  //       const place = json.features[0].place_name.split(', ');
+  //       return [place.at(-2), place.at(-1)].map((name) => name).join(', ');
+  //     } catch (error) {
+  //       console.error('getPlaceNameByCoordinate: error:', error);
+  //       return `${latitude}, ${longitude}`;
+  //     }
+  //   }
 
   /**
    * Mengambil nama tempat berdasarkan koordinat menggunakan reverse geocoding.
@@ -163,7 +179,6 @@ export default class Map {
     const newMarker = marker(coordinates, {
       icon: this.createIcon(),
       alt: 'Marker',
-      draggable: true,
       ...markerOptions,
     });
 
@@ -190,88 +205,4 @@ export default class Map {
   }
 }
 
-
-//baru
-
-// import { map, tileLayer, marker, circle, popup } from 'leaflet';
-
-// export default class Map {
-//   constructor(selector, center = [-6.2088, 106.8456], zoom = 13) {
-//     this.map = map(document.querySelector(selector), {
-//       center,
-//       zoom,
-//     });
-
-//     // Tambahkan tile layer OpenStreetMap
-//     tileLayer('https://tile.openstreetmap.org/ {z}/{x}/{y}.png', {
-//       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-//     }).addTo(this.map);
-//   }
-
-//   /**
-//    * Menambahkan marker ke peta
-//    * @param {Array} coordinates [lat, lng]
-//    * @param {String} text Konten popup
-//    * @param {Boolean} openPopup Apakah popup langsung dibuka?
-//    */
-//   addMarker(coordinates, text = '', openPopup = false) {
-//     const newMarker = marker(coordinates).addTo(this.map);
-//     if (text) {
-//       newMarker.bindPopup(text);
-//       if (openPopup) {
-//         newMarker.openPopup();
-//       }
-//     }
-//     return newMarker;
-//   }
-
-//   /**
-//    * Menambahkan lingkaran ke peta
-//    * @param {Array} coordinates [lat, lng]
-//    * @param {Number} radius Radius dalam meter
-//    * @param {Object} options Opsi styling
-//    * @param {String} popupText Konten popup
-//    */
-//   addCircle(coordinates, radius = 500, options = {}, popupText = '') {
-//     const defaultOptions = {
-//       color: 'red',
-//       fillColor: '#f03',
-//       fillOpacity: 0.5,
-//       ...options,
-//     };
-
-//     const newCircle = circle(coordinates, defaultOptions).addTo(this.map);
-
-//     if (popupText) {
-//       newCircle.bindPopup(popupText);
-//     }
-
-//     return newCircle;
-//   }
-
-//   /**
-//    * Menambahkan event click pada peta
-//    * @param {Function} callback Fungsi yang dipanggil saat klik
-//    */
-//   onMapClick(callback) {
-//     this.map.on('click', (e) => {
-//       if (typeof callback === 'function') {
-//         callback(e);
-//       } else {
-//         const pop = popup()
-//           .setLatLng(e.latlng)
-//           .setContent(`You clicked the map at ${e.latlng.toString()}`)
-//           .openOn(this.map);
-//       }
-//     });
-//   }
-
-//   /**
-//    * Memindahkan kamera ke koordinat tertentu
-//    * @param {Array} coordinates [lat, lng]
-//    * @param {Number} zoomLevel Level zoom
-//    */
-//   setView(coordinates, zoomLevel = this.map.getZoom()) {
-//     this.map.setView(coordinates, zoomLevel);
-//   }
-// }
+// code by qwen

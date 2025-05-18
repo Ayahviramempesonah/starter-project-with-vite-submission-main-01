@@ -24,6 +24,16 @@ export function putAccessToken(token) {
   }
 }
 
+export function removeAccessToken() {
+  try {
+    localStorage.removeItem(CONFIG.ACCESS_TOKEN_KEY);
+    return true;
+  } catch (error) {
+    console.log('removeAccessToken: error', error.message);
+    return false;
+  }
+}
+
 const unauthenticatedRoutesOnly = ['/login', '/register'];
 
 export function checkUnauthenticatedRouteOnly(page) {
