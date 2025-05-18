@@ -62,11 +62,11 @@ export default class HomePage {
       // }
       //coba
       if (report.lat !== null && report.lon !== null && !isNaN(report.lat) && !isNaN(report.lon)) {
-        console.log(report);
+        // console.log(report);
         const coordinate = [report.lat, report.lon];
         const markerOptions = { alt: report.name };
         const popupOptions = { content: report.description };
-        console.log('coordinate', coordinate);
+        // console.log('coordinate', coordinate);
         this.#map.addMarker(coordinate, markerOptions, popupOptions);
       }
 

@@ -1,7 +1,11 @@
 import { fetchStoryById } from '../../data/api';
-import { generateItemDetailTemplate } from '../../template';
+import { generateItemDetailTemplate ,generateLoaderAbsoluteTemplate} from '../../template';
 import Map from '../../utils/map';
-import { parseActivePathname } from '../../routes/url-parser';
+// import { parseActivePathname } from '../../routes/url-parser';
+import  DetailPresenter  from './detail-presenter';
+// import  generateLoaderAbsoluteTemplate  from '../../template';
+
+
 
 export default class DetailPage {
   #presenter;
@@ -23,6 +27,11 @@ export default class DetailPage {
   }
 
   async afterRender() {
+
+    
+
+
+
     try {
       // Dapatkan ID cerita dari URL
       const urlParts = window.location.hash.slice(2).split('/');
@@ -72,4 +81,16 @@ export default class DetailPage {
       locate: true,
     });
   }
+
+  // show loading component
+  showMapLoading() {
+    document.getElementById('map-loading-container').innerHTML = generateLoaderAbsoluteTemplate();
+  }
+
+  hideMapLoading() {
+    document.getElementById('map-loading-container').innerHTML = '';
+  }
+
 }
+
+
