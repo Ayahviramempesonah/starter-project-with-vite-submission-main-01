@@ -12,7 +12,7 @@ export default class DetailPresenter {
   }
 
   async showDetailMap() {
-    console.log('apiModel in showStoryDetail:', this.#apiModel); // tambahkan ini
+    console.log('apiModel in showStoryDetail:', this.#apiModel); 
 
     // this.#view.showMapLoading();
 
@@ -22,7 +22,7 @@ export default class DetailPresenter {
     } catch (error) {
       console.error('showDetailMap: error:', error);
     } finally {
-      // this.#view.hideMapLoading();
+      //  this.#view.hideMapLoading();
     }
   }
 

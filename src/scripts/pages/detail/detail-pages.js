@@ -91,7 +91,7 @@ export default class DetailPage {
 
   // show loading component
   showMapLoading() {
-    document.getElementById('map-loading-container').innerHTML = '';
+    document.getElementById('map-loading-container').innerHTML = 'bbbb';
   }
 
   hideMapLoading() {
