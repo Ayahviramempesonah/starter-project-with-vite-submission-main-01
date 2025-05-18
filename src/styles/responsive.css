@@ -37,17 +37,9 @@ form .form-buttons {
     border: 1px solid #d4d4d4;
   }
 
-  /* .story-list {
-    grid-template-columns: repeat(3, 1fr);
-  } */
+ 
 }
 
-/* MEDIA QUERY: Tablet besar (>= 900px) */
-/* @media screen and (min-width: 900px) {
-  .story-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} */
 
 /* MEDIA QUERY: Desktop (>= 1200px) */
 @media screen and (min-width: 1200px) {
@@ -83,22 +75,3 @@ form .form-buttons {
   }
 }
 
-/* @media screen and (min-width: 1000px) {
-  .reports-list__map__container,
-  .reports-list__map,
-  #map {
-    height: 600px;
-  }
-
-  .navigation-drawer {
-    min-height: auto;
-    width: auto;
-    padding: 0;
-    background-color: transparent;
-    flex-direction: row;
-    justify-content: space-between;
-    position: static;
-    transform: translateX(0);
-    opacity: 1;
-  }
-} */
