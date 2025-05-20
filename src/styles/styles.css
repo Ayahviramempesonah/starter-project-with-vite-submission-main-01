@@ -289,7 +289,7 @@ header {
 }
 
 .brand-name {
-  font-size: 1.125rem;
+  font-size: 1.75rem;
   font-weight: bold;
   text-decoration: none;
   color: #333;
@@ -576,18 +576,11 @@ form-control {
   border-radius: 4px;
 }
 
-//footer
 .container-footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-#pfooter {
-  align-items: center;
 }
 /* detail */
 .detail-container {
@@ -604,9 +597,7 @@ form-control {
   animation: full-slide-from-right ease-out 0.8s forwards;
 }
 
-//about
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -634,13 +625,13 @@ p {
   color: #00698f;
 }
 
-//skiptocontent
 .skip-to-content {
   position: absolute;
   top: -40px;
   left: 10px;
   background: #000;
   color: white;
+  opacity: 0;
   padding: 8px 12px;
   border-radius: 4px;
   z-index: 9999;
@@ -649,6 +640,8 @@ p {
 
 .skip-to-content:focus {
   top: 10px;
+  opacity: 1;
+
   outline: 2px solid white;
 }
 #strory-list {

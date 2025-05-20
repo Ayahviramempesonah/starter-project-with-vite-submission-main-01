@@ -12,7 +12,7 @@ export default class DetailPresenter {
   }
 
   async showDetailMap() {
-    console.log('apiModel in showStoryDetail:', this.#apiModel); 
+    console.log('apiModel in showStoryDetail:', this.#apiModel);
 
     // this.#view.showMapLoading();
 
