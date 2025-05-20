@@ -634,7 +634,6 @@ p {
   color: #00698f;
 }
 
-//skiptocontent
 .skip-to-content {
   position: absolute;
   top: -40px;
@@ -654,5 +653,4 @@ p {
 #strory-list {
   animation: full-slide-from-right ease-out 0.8s forwards;
 
-  outline: 2px dashed #000;
 }

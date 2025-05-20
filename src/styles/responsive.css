@@ -75,3 +75,12 @@ form .form-buttons {
   }
 }
 
+/* untuk device kecil */
+@media screen and (max-width: 600px) {
+  .reports-list__map__container,
+  .reports-list__map,
+  #map {
+    height: 200px;
+  }
+}
+

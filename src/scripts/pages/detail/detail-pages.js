@@ -15,28 +15,28 @@ export default class DetailPage {
   async render() {
     return `
      <section class="detail-container" aria-labelledby="detail-title">
-  <h1 id="detail-title">Story Detail</h1>
+      <h1 id="detail-title">Story Detail</h1>
   
-  <!-- Loading State -->
-  <div 
+    <!-- Loading State -->
+    <div 
     id="story-detail-loadiing" 
     aria-live="polite" 
     aria-busy="true" 
     hidden
-  >
+     >
     <p class="visually-hidden">Memuat detail story...</p>
     <div class="loading-spinner" aria-hidden="true"></div>
-  </div>
+    </div>
   
-  <!-- Konten Utama -->
-  <div 
+    <!-- Konten Utama -->
+    <div 
     id="story-detail" 
     aria-live="polite" 
     role="article"
-  >
+   >
     <!-- Konten akan diisi secara dinamis -->
-  </div>
-</section>
+   </div>
+    </section>
     `;
   }
 
